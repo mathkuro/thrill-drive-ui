@@ -1,0 +1,15 @@
+{
+    "name" : "Crash UI like Thrill Drive",
+    "author": "ますくろ",
+    "version": "0.1",
+    "description": "Display total damage and enable crash camera.",
+    "directive": "thrillDrive",
+    "domElement": "<thrill-drive></thrill-drive>",
+    "css": {
+      "width": "96%",
+      "height": "50%",
+      "bottom": "30%",
+      "left": "2%"
+    },
+    "preserveAspectRatio": false
+  }

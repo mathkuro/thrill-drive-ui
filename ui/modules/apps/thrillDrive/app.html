@@ -1,0 +1,70 @@
+<div class="thrillDrive" style="font-family: 'YuMincho', 'Yu Mincho';">
+  <div ng-controller="AppCtrl" ng-cloak>
+
+    <md-content flex layout-padding style="max-width: 15%;" class="bngApp">
+      <div layout="column">
+        <!--- 被害総額 -->
+        <div style="font-size:300%;font-weight:bold;text-align:center;">
+          {{ totalDamageTitle }}
+          <br>
+          {{ totalDamage }}
+          <br>
+        </div>
+        <!--- 設定ボタン -->
+        <div layout-align="center end">
+          <md-button ng-click="toggleLeft()" class="md-raised md-primary">settings</md-button>
+        </div>
+      </div>
+    </md-content>
+
+    <!-- サイドナビ -->
+    <md-sidenav
+        class="bngApp"
+        md-component-id="left"
+        md-disable-backdrop=""
+        md-whiteframe="4">
+
+      <md-content layout-margin="">
+        <!-- 閉じるボタン -->
+        <md-button ng-click="toggleLeft()" class="md-raised md-primary">
+          Close
+        </md-button>
+
+        <!-- クラッシュカメラ設定 -->
+        <p>
+          <md-checkbox ng-model="crashCamera.enabled" aria-label="Checkbox 1"> {{ crashCamera.title }} : {{ crashCamera.enabled }}</md-checkbox>
+          <span style="margin-left: 2rem;">{{ crashCamera.durationTitle }} : 
+            <input type="number" min="0" max="60" ng-model="crashCamera.duration" aria-label="crash-camera-duration" aria-controls="crash-camera-duration" style="width: 4rem;">
+        </span>
+        </p>
+
+        <br>
+
+        <!-- 言語設定 -->
+        <p>
+          <label id="language">Language:</label> <span class="radioValue">{{ language }}</span>
+        </p>
+        <md-radio-group ng-model="language" aria-labelledby="language">
+          <md-radio-button value="en">English</md-radio-button>
+          <md-radio-button value="ja">日本語</md-radio-button>
+        </md-radio-group>
+
+        <br>
+
+        <!-- データリセットボタン -->
+        <md-button ng-click="resetTotalDamage()" class="md-raised md-warn">
+          Reset Total Damage
+        </md-button>
+      </md-content>
+    </md-sidenav>
+
+    <!-- クラッシュ時のメッセージ表示エリア -->
+    <div style="font-size:1000%;font-weight:bold;text-align:center;color: #F00;">
+      <marquee scrollamount="20">{{ crashMessage }}</marquee>
+    </div>
+    <div style="font-size:500%;font-weight:bold;text-align:right; color: #F00;">
+      {{ currentDamageString }}
+    </div>
+
+  </div>
+</div>
